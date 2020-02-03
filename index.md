@@ -1,5 +1,5 @@
 <head>
-    <script src="main.js"></script>
+    <script src="../dist/main.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
 
