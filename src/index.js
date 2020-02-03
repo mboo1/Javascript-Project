@@ -27,27 +27,49 @@ class keyStatus {
     }
 }
 
+var img = new Image();
+img.onload = function() {
+    document.addEventListener('DOMContentLoaded', () => {
+        let canvas = document.getElementById('game-canvas');
+        let ctx = canvas.getContext('2d');
+        ctx.imageSmoothingEnabled = false;
+        let gameView = new GameView(ctx);
+        gameView.start();
+        let gameShip = gameView.game.ships[0]
+        let gameStatus = new keyStatus;
+        document.addEventListener('keyup', function(event) {
+            gameStatus.onKeyup(event);
+            gameShip.takeMove(gameStatus)
+            }, false);
+        document.addEventListener('keydown', function(event) {
+            gameStatus.onKeydown(event);
+            gameShip.takeMove(gameStatus);
+        }, false)
 
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('listener')
-    let canvas = document.getElementById('game-canvas');
-    let ctx = canvas.getContext('2d');
-    ctx.imageSmoothingEnabled = false;
-    let gameView = new GameView(ctx);
-    gameView.start();
-    let gameShip = gameView.game.ships[0]
-    let gameStatus = new keyStatus;
-    document.addEventListener('keyup', function(event) {
-        gameStatus.onKeyup(event);
-        gameShip.takeMove(gameStatus)
-        }, false);
-    document.addEventListener('keydown', function(event) {
-        gameStatus.onKeydown(event);
-        gameShip.takeMove(gameStatus);
-    }, false)
+
+    })
+};
+img.src = '../img/ship.png';
+
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     let canvas = document.getElementById('game-canvas');
+    //     let ctx = canvas.getContext('2d');
+    //     ctx.imageSmoothingEnabled = false;
+    //     let gameView = new GameView(ctx);
+    //     gameView.start();
+    //     let gameShip = gameView.game.ships[0]
+    //     let gameStatus = new keyStatus;
+    //     document.addEventListener('keyup', function(event) {
+    //         gameStatus.onKeyup(event);
+    //         gameShip.takeMove(gameStatus)
+    //         }, false);
+    //     document.addEventListener('keydown', function(event) {
+    //         gameStatus.onKeydown(event);
+    //         gameShip.takeMove(gameStatus);
+    //     }, false)
 
 
-})
+    // })
 
 
 
