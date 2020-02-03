@@ -1,6 +1,6 @@
 <head>
     <script src="dist/main.js"></script>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="dist/index.css">
 </head>
 
 <body>
