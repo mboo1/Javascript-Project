@@ -5,11 +5,9 @@
 
 <body>
     <div id="game-over-overlay"></div>
-
+    <canvas id="game-canvas" width="500" height="500"></canvas>
     <div id="game-over">
       <h1>GAME OVER</h1>
       <button id="play-again">Play Again</button>
     </div>
-
-    <canvas id="game-canvas" width="500" height="500"></canvas>
 </body>
