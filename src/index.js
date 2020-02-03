@@ -28,8 +28,10 @@ class keyStatus {
 }
 
 var img = new Image();
+img.src = '../img/ship.png';
+
 img.onload = function() {
-    document.addEventListener('DOMContentLoaded', () => {
+     document.addEventListener('DOMContentLoaded', () => {
         let canvas = document.getElementById('game-canvas');
         let ctx = canvas.getContext('2d');
         ctx.imageSmoothingEnabled = false;
@@ -49,7 +51,6 @@ img.onload = function() {
 
     })
 };
-img.src = '../img/ship.png';
 
     // document.addEventListener('DOMContentLoaded', () => {
     //     let canvas = document.getElementById('game-canvas');
