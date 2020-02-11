@@ -24,7 +24,7 @@ class Game {
         // this.addEnemies();
         this.addShip();
         this.background = new Image();
-        this.background.src = './gimg/background.png';
+        this.background.src = '../background.png';
         this.gameTime = 0;
         this.wave = 0;
     }
