@@ -82,7 +82,7 @@ begin = begin.bind(this);
 // }, 1000)
 
 setTimeout(() => {
-    console.log('othert')
+    console.log('othertn1')
     begin();
 }, 500)
 
@@ -90,13 +90,13 @@ let loader = new Resourcer();
 loader.testo();
 
 loader.load([
-    './gimg/background.png',
+    '../background.png',
     './gimg/enemybig.png',
     './gimg/enemysmall.png',
     './gimg/enemysniper.png',
     './gimg/explosion.png',
     './gimg/laserbolts.png',
-    './gimg/ship.png',
+    '../ship.png',
     './gimg/ship6.png',
 ]);
 console.log(loader.resourceCache);
