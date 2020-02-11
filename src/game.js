@@ -24,7 +24,7 @@ class Game {
         // this.addEnemies();
         this.addShip();
         this.background = new Image();
-        this.background.src = '../background.png';
+        this.background.src = './gimg/background.png';
         this.gameTime = 0;
         this.wave = 0;
     }
@@ -39,7 +39,7 @@ class Game {
                 coord += 20;
             }
             squadsAdded += 1;
-            if (squadsAdded === squads) clearInterval(addSquads);
+            if (squadsAdded === squads || this.gameView.gameOver === true) clearInterval(addSquads);
         }, 3000);
     }
 
@@ -50,7 +50,7 @@ class Game {
             let newEn = new EnemySniper({pos: [coord, coord], game: this});
             this.enemies.push(newEn);
             unitsAdded += 1;
-            if (unitsAdded === units) clearInterval(addUnits);
+            if (unitsAdded === units || this.gameView.gameOver === true) clearInterval(addUnits);
         }, 1000)
     }
 
@@ -66,7 +66,7 @@ class Game {
                 coordY -= 25; 
             }
             squadsAdded += 1;
-            if (squadsAdded === squads) clearInterval(addSquads);
+            if (squadsAdded === squads || this.gameView.gameOver === true) clearInterval(addSquads);
         }, 2000)
     }
 
@@ -94,7 +94,7 @@ class Game {
             this.addEnemyBoss(1);
         }
 
-        this.gameTime += this.gameView.dt
+        if (!this.gameView.gameOver) this.gameTime += this.gameView.dt
     }
 
     checkOutOfBounds() {

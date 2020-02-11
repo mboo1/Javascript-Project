@@ -21,6 +21,9 @@ class GameView {
         this.game.playerBullets = [];
         this.game.gameTime = 0;
         this.game.wave = 0;
+        this.lastTime = 1138;
+        this.dt = 0;
+        this.animationRef = 0;
         document.getElementById('game-over').style.display = 'none';
         document.getElementById('game-over-overlay').style.display = 'none';
         this.gameOver = false;

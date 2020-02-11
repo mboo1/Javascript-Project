@@ -22,13 +22,13 @@ class Ship extends MovingObject {
         this.fireEffect = document.createElement("audio");
         // this.fireEffect.src = "../img/Gun12.wav";
         // this.sprite = new Sprite('../img/ship.png', [0,0], [15,24], [50, 50], 16, [0, 1, 2, 3, 4, 3, 2, 1], 'horizontal');
-        this.sprite = new Sprite('../ship.png', [32,0], [17,24], [50, 50], 16, [0, 1], 'vertical');
+        this.sprite = new Sprite('./gimg/ship.png', [32,0], [17,24], [50, 50], 16, [0, 1], 'vertical');
         this.sprites = {
-            bankLeft: new Sprite('../ship.png', [0,0], [17,24], [50, 50], 16, [0, 1], 'vertical'),
-            static: new Sprite('../ship.png', [32,0], [17,24], [50, 50], 16, [0, 1], 'vertical'),
-            bankRight: new Sprite('../ship.png', [64,0], [17,24], [50, 50], 16, [0, 1], 'vertical'),
-            lightRight: new Sprite('../ship.png', [48,0], [17,24], [50, 50], 16, [0, 1], 'vertical'),
-            lightLeft: new Sprite('../ship.png', [16,0], [16,24], [50, 50], 16, [0, 1], 'vertical')
+            bankLeft: new Sprite('./gimg/ship.png', [0,0], [17,24], [50, 50], 16, [0, 1], 'vertical'),
+            static: new Sprite('./gimg/ship.png', [32,0], [17,24], [50, 50], 16, [0, 1], 'vertical'),
+            bankRight: new Sprite('./gimg/ship.png', [64,0], [17,24], [50, 50], 16, [0, 1], 'vertical'),
+            lightRight: new Sprite('./gimg/ship.png', [48,0], [17,24], [50, 50], 16, [0, 1], 'vertical'),
+            lightLeft: new Sprite('./gimg/ship.png', [16,0], [16,24], [50, 50], 16, [0, 1], 'vertical')
         }
     }
 
@@ -56,10 +56,10 @@ class Ship extends MovingObject {
 
     collideWith(otherObject) {
         if (otherObject instanceof Enemy) {
-            // this.gameView.gameOver = true;
-            // this.pos = [-40, -40];
-            // this.vel[0] = 0;
-            // this.vel[1] = 0;
+            this.gameView.gameOver = true;
+            this.pos = [-40, -40];
+            this.vel[0] = 0;
+            this.vel[1] = 0;
         }
     }
 
