@@ -1,5 +1,6 @@
 <head>
     <script src="dist/main.js"></script>
+    <script type="text/javascript" src="src/resources.js"></script>
     <link rel="stylesheet" href="dist/index.css">
 </head>
 

@@ -50,6 +50,7 @@ class Ship extends MovingObject {
             if (this.game.playerBullets.length <= BULLET_COUNT) this.game.playerBullets.push(newBullet);
             this.prevFire = Date.now()
             // this.fireEffect.play();
+            console.log('hello')
         }
     }
 
