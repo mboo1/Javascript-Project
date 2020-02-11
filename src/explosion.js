@@ -7,7 +7,7 @@ class Explosion extends MovingObject {
         this.vel = [0, 0];
         this.color = 'red';
         this.radius = 10;
-        this.sprite = new Sprite('../img/explosion.png', [0,0], [16,16], [32, 32], 12, [0, 1, 2, 3, 4], 'horizontal', true);
+        this.sprite = new Sprite('./gimg/explosion.png', [0,0], [16,16], [32, 32], 12, [0, 1, 2, 3, 4], 'horizontal', true);
     }
 
     draw(ctx) {

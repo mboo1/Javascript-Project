@@ -10,7 +10,7 @@ class EnemyOne extends Enemy {
         this.radius = 12;
         this.vel = [3, 0.5];
         this.timer = 0;
-        this.sprite = new Sprite('../img/enemysmall.png', [0,0], [16,16], [22, 22], 0.5, [0, 1], 'horizontal');
+        this.sprite = new Sprite('./gimg/enemysmall.png', [0,0], [16,16], [22, 22], 0.5, [0, 1], 'horizontal');
     }
 
     fire() {

@@ -10,7 +10,7 @@ class EnemyFlanker extends Enemy {
         this.radius = 12;
         this.vel = [0, 1];
         this.timer = 0;
-        this.sprite = new Sprite('../img/enemysmall.png', [0,16], [16,16], [22, 22], 0.5, [0, 1], 'horizontal');
+        this.sprite = new Sprite('./gimg/enemysmall.png', [0,16], [16,16], [22, 22], 0.5, [0, 1], 'horizontal');
         this.pos[0] > 50 ? this.bulletDir = -3 : this.bulletDir = 3;
     }
 

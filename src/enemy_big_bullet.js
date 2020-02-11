@@ -4,7 +4,7 @@ const Sprite = require('./sprite');
 class EnemyBigBullet extends EnemyBullet {
     constructor(props) {
         super(props)
-        this.sprite = new Sprite('../img/laserbolts.png', [5,5], [14,12], [60, 60], 2, [0, 1], 'horizontal');
+        this.sprite = new Sprite('./gimg/laserbolts.png', [5,5], [14,12], [60, 60], 2, [0, 1], 'horizontal');
         this.radius = 15;
     }
 

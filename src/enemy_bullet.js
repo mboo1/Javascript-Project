@@ -7,7 +7,7 @@ class EnemyBullet extends Enemy {
         this.color = 'orange';
         this.radius = 6;
         // this.vel = [0, 3.5];
-        this.sprite = new Sprite('../img/laserbolts.png', [5,5], [14,12], [35, 35], 2, [0, 1], 'horizontal');
+        this.sprite = new Sprite('./gimg/laserbolts.png', [5,5], [14,12], [35, 35], 2, [0, 1], 'horizontal');
     }
 
     draw(ctx) {

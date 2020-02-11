@@ -12,7 +12,7 @@ class EnemySniper extends Enemy {
         this.vel = [2, 0.5];
         this.timer = 0;
         this.hp = 5;
-        this.sprite = new Sprite('../img/enemysniper.png', [0,0], [32,16], [96, 50], 12, [0, 1], 'horizontal');
+        this.sprite = new Sprite('./gimg/enemysniper.png', [0,0], [32,16], [96, 50], 12, [0, 1], 'horizontal');
     }
 
     fire() {

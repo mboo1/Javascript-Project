@@ -10,7 +10,7 @@ class PlayerBullet extends MovingObject {
         this.radius = 3;
         this.color = 'blue';
         this.vel = [0, -3.0];
-        this.sprite = new Sprite('../img/laserbolts.png', [5,16], [14,12], [20, 20], 32, [0, 1], 'horizontal');
+        this.sprite = new Sprite('./gimg/laserbolts.png', [5,16], [14,12], [20, 20], 32, [0, 1], 'horizontal');
     }
 
     collideWith(otherObject) {
