@@ -81,10 +81,10 @@ begin = begin.bind(this);
 //     console.log('timer')
 // }, 1000)
 
-// setTimeout(() => {
-//     console.log('othert')
-//     begin();
-// }, 3000)
+setTimeout(() => {
+    console.log('othert')
+    begin();
+}, 10000)
 
 let loader = new Resourcer();
 loader.testo();
@@ -101,19 +101,7 @@ loader.load([
 ]);
 console.log(loader.resourceCache);
 console.log(loader.readyCallbacks);
-loader.onReady(begin);
-
-// resLoad([
-//     '../img/background.png',
-//     '../img/enemybig.png',
-//     '../img/enemysmall.png',
-//     '../img/enemysniper.png',
-//     '../img/explosion.png',
-//     '../img/laserbolts.png',
-//     '../img/ship.png',
-//     '../img/Ship6.png',
-// ]);
-// resources.onReady(begin);
+// loader.onReady(begin);
 
 
 
@@ -125,10 +113,3 @@ loader.onReady(begin);
 
 
 
-
-    // let red = new MovingObject({pos: [40,40], vel: [1,1], radius: 6, color: 'blue'})
-    // red.draw(ctx);
-    // window.red = red;
-    // let blue = new EnemyOne({pos: [100,100]})
-    // blue.draw(ctx);
-    // window.blue = blue;
