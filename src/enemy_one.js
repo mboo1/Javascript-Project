@@ -6,6 +6,7 @@ const Sprite = require('./sprite');
 class EnemyOne extends Enemy {
     constructor(props) {
         super(props);
+        this.value = 15;
         this.color = 'white';
         this.radius = 12;
         this.vel = [3, 0.5];

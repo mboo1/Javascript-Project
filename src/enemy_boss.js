@@ -10,6 +10,7 @@ class EnemyBoss extends Enemy {
         this.vel = [0, 0];
         this.pos = [250, 250]
         this.timer = 0;
+        this.value = 1000;
         this.okay = true;
         this.sprite = new Sprite('./gimg/ship6.png', [0,0], [156,156], [300, 300], 8, [0], 'horizontal');
     }

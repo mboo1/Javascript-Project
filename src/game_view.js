@@ -21,11 +21,13 @@ class GameView {
         this.game.playerBullets = [];
         this.game.gameTime = 0;
         this.game.wave = 0;
+        this.game.score = 0;
         this.lastTime = 1138;
         this.dt = 0;
         this.animationRef = 0;
         document.getElementById('game-over').style.display = 'none';
-        document.getElementById('game-over-overlay').style.display = 'none';
+        // document.getElementById('game-canvas').style.display = 'block';
+        // document.getElementById('game-over-overlay').style.display = 'none';
         this.gameOver = false;
         this.firstGame = false;
         this.game.ships[0].pos = [250, 250];
@@ -47,7 +49,8 @@ class GameView {
             this.animationRef = requestAnimationFrame(this.runGame);
             this.animationRef = 0;
             document.getElementById('game-over').style.display = 'block';
-            document.getElementById('game-over-overlay').style.display = 'block';
+            // document.getElementById('game-canvas').style.display = 'none';
+            // document.getElementById('game-over-overlay').style.display = 'block';
             document.getElementById('play-again').addEventListener('click', () => {
                 this.reset();
             });
@@ -56,7 +59,7 @@ class GameView {
 
     start() {
         document.getElementById('game-over').style.display = 'none';
-        document.getElementById('game-over-overlay').style.display = 'none';
+        // document.getElementById('game-over-overlay').style.display = 'none';
         if (this.firstGame) this.animationRef = requestAnimationFrame(this.runGame);
     //     if (this.firstGame) {setInterval(() => {
     //         this.game.addEnemies();

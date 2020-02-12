@@ -29,6 +29,61 @@ class keyStatus {
     }
 }
 
+function begin() { 
+    document.getElementById('game-start').style.display = 'none';
+    document.getElementById('launch-message').style.display = 'none';
+    document.removeEventListener('keydown', handleRPress);
+    let canvas = document.getElementById('game-canvas');
+    let ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = false;
+    let gameView = new GameView(ctx);
+    gameView.start();
+    let gameShip = gameView.game.ships[0]
+    let gameStatus = new keyStatus;
+    document.addEventListener('keyup', function(event) {
+        gameStatus.onKeyup(event);
+        gameShip.takeMove(gameStatus)
+        }, false);
+    document.addEventListener('keydown', function(event) {
+        gameStatus.onKeydown(event);
+        gameShip.takeMove(gameStatus);
+    }, false)
+}
+
+begin = begin.bind(this);
+
+document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('game-over').style.display = 'none';
+        document.addEventListener('keydown', handleRPress);
+})
+
+function handleRPress(e) {
+    if (e.keyCode === 82) begin();
+    console.log(e.keyCode)
+}
+
+
+// setTimeout(() => {
+//     // console.log('othertn2')
+//     begin();
+// }, 400)
+
+let loader = new Resourcer();
+loader.testo();
+
+loader.load([
+    './gimg/background.png',
+    './gimg/enemybig.png',
+    './gimg/enemysmall.png',
+    './gimg/enemysniper.png',
+    './gimg/explosion.png',
+    './gimg/laserbolts.png',
+    './gimg/ship.png',
+    './gimg/ship6.png',
+]);
+// loader.onReady(begin);
+
+
 // function begin() { document.addEventListener('DOMContentLoaded', () => {
 //     console.log('rem');
 //     let canvas = document.getElementById('game-canvas');
@@ -49,59 +104,6 @@ class keyStatus {
 
 
 // })}
-
-function begin() { 
-    console.log('rem');
-    let canvas = document.getElementById('game-canvas');
-    let ctx = canvas.getContext('2d');
-    ctx.imageSmoothingEnabled = false;
-    let gameView = new GameView(ctx);
-    gameView.start();
-    let gameShip = gameView.game.ships[0]
-    let gameStatus = new keyStatus;
-    document.addEventListener('keyup', function(event) {
-        gameStatus.onKeyup(event);
-        gameShip.takeMove(gameStatus)
-        }, false);
-    document.addEventListener('keydown', function(event) {
-        gameStatus.onKeydown(event);
-        gameShip.takeMove(gameStatus);
-    }, false)
-
-}
-
-begin = begin.bind(this);
-
-// setTimeout(() => {
-//     begin();
-// }, 1000)
-// begin();
-
-// setTimeout(() => {
-//     console.log('timer')
-// }, 1000)
-
-setTimeout(() => {
-    console.log('othertn2')
-    begin();
-}, 500)
-
-let loader = new Resourcer();
-loader.testo();
-
-loader.load([
-    './gimg/background.png',
-    './gimg/enemybig.png',
-    './gimg/enemysmall.png',
-    './gimg/enemysniper.png',
-    './gimg/explosion.png',
-    './gimg/laserbolts.png',
-    './gimg/ship.png',
-    './gimg/ship6.png',
-]);
-console.log(loader.resourceCache);
-console.log(loader.readyCallbacks);
-// loader.onReady(begin);
 
 
 

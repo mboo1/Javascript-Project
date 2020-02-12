@@ -56,10 +56,10 @@ class Ship extends MovingObject {
 
     collideWith(otherObject) {
         if (otherObject instanceof Enemy) {
-            this.gameView.gameOver = true;
-            this.pos = [-40, -40];
-            this.vel[0] = 0;
-            this.vel[1] = 0;
+            // this.gameView.gameOver = true;
+            // this.pos = [-40, -40];
+            // this.vel[0] = 0;
+            // this.vel[1] = 0;
         }
     }
 

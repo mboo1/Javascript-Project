@@ -18,8 +18,6 @@ class Resourcer {
                 this.resourceCache[url] = img;
                 if(this.isReady()) {
                     this.readyCallbacks.forEach((func) => {
-                        console.log(func)
-                        console.log('grim')
                         func(); 
                     });
                 }

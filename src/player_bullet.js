@@ -18,6 +18,7 @@ class PlayerBullet extends MovingObject {
             otherObject.hp -= 1;
             this.game.remove(this);
             if (otherObject.hp < 1) {
+                this.game.score += otherObject.value;
                 this.game.remove(otherObject);
                 let nuExplosion = new Explosion({pos: [this.pos[0], this.pos[1]], game: this.game})
                 this.game.explosions.push(nuExplosion);

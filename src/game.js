@@ -27,6 +27,7 @@ class Game {
         this.background.src = './gimg/background.png';
         this.gameTime = 0;
         this.wave = 0;
+        this.score = 0;
     }
 
     addEnemyOnes(squads) {
@@ -178,6 +179,14 @@ class Game {
         this.allObjects().forEach(obj => {
             obj.draw(ctx)
         })
+        this.drawGameInfo(ctx);
+    }
+
+    drawGameInfo(ctx) {
+        ctx.font = '20px VT323';
+        ctx.fillStyle = 'yellow'
+        ctx.fillText(`Score: ${this.score}`, DIM_X-100, 20);
+        ctx.fillText(`Wave: ${this.wave}`, 20, 20);  
     }
 
     moveObjects() {
