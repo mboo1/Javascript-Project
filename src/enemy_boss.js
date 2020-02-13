@@ -6,23 +6,30 @@ class EnemyBoss extends Enemy {
     constructor(props) {
         super(props);
         this.color = 'red';
-        this.radius = 64;
-        this.vel = [0, 0];
-        this.pos = [250, 250]
+        this.radius = 72;
+        this.vel = [0, 1];
+        this.pos = [250, -50]
         this.timer = 0;
         this.value = 1000;
         this.okay = true;
+        this.hp = 50;
         this.sprite = new Sprite('./gimg/ship6.png', [0,0], [156,156], [300, 300], 8, [0], 'horizontal');
     }
 
     fire() {
-        if (this.timer % 180 === 0 && this.okay) {
-            this.fireBulletHalo(100)
-            // this.okay = false;
+        if (this.timer === 300 || this.timer % 1900 === 0)  {
+            console.log(this.timer)
+            let waves = 0;
+            let haloWaves = setInterval(() => {
+                waves += 1;
+                this.fireBulletHalo(65);
+                if (waves === 4) clearInterval(haloWaves)
+            },1000)
         }
     }
 
     fireBulletHalo(rounds) {
+        console.log('here')
         let roundsFired = 0;
         let xSpeed = 2;
         let ySpeed = 0;
@@ -48,8 +55,8 @@ class EnemyBoss extends Enemy {
             if (xSpeed >= 2) xFalling = true;
             if (ySpeed <= -2) yFalling = false;
             if (ySpeed >= 2) yFalling = true;
-            if (roundsFired === rounds) clearInterval(bulletTime)
-        }, 150);
+            if (roundsFired === rounds || this.hp === 0) clearInterval(bulletTime)
+        }, 200);
     }
 
     move() {
@@ -61,10 +68,11 @@ class EnemyBoss extends Enemy {
         } 
         this.timer += 1;
         if (this.timer % 180 === 0) {
-            // let newX = Math.random() - Math.random() *1.5;
-            // let newY = Math.random() - Math.random();
-            // this.vel = [newX, newY];
-        } if (this.timer > 180) {
+            let newX = Math.random() - Math.random() *1.5;
+            let newY = Math.random() - Math.random();
+            this.vel = [newX, newY];
+            console.log(this.vel);
+        } if (this.timer > 300) {
             if (this.pos[0] < 10) this.vel[0] = 0.75;
             if (this.pos[0] > 490) this.vel[0] = -0.75;
             if (this.pos[1] < 10) this.vel[1] = 0.75;
@@ -80,11 +88,24 @@ class EnemyBoss extends Enemy {
         ctx.arc(
             this.pos[0], this.pos[1], this.radius, 0, 2*Math.PI, true
         );
-        // ctx.fill();
-        this.sprite.render(ctx, this.pos[0]-this.radius-100, this.pos[1]-this.radius-100);
+        ctx.fill();
+        this.sprite.render(ctx, this.pos[0]-this.radius-50, this.pos[1]-this.radius-50);
     }
 
 
 }
 
 module.exports = EnemyBoss;
+
+
+            // this.fireBulletHalo(75);
+            // setTimeout(() => {
+            //     this.fireBulletHalo(75)
+            // }, 1000)
+            // setTimeout(() => {
+            //     this.fireBulletHalo(75)
+            // }, 2000)
+            // setTimeout(() => {
+            //     this.fireBulletHalo(75)
+            // }, 3000)
+            // this.okay = false;

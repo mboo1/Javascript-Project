@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function handleRPress(e) {
     if (e.keyCode === 82) begin();
-    console.log(e.keyCode)
 }
 
 

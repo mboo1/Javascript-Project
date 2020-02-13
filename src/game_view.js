@@ -11,17 +11,19 @@ class GameView {
         this.reset = this.reset.bind(this);
         this.firstGame = true;
         this.animationRef = 0;
+        this.handleQPress = this.handleQPress.bind(this);
+        this.addScore = this.addScore.bind(this);
     }
 
     reset() {
-        document.getElementById('play-again').removeEventListener('click', () => {
-            this.reset();
-        });
+        document.removeEventListener('keydown', this.handleQPress);
+        this.addScore();
         this.game.enemies = [];
         this.game.playerBullets = [];
         this.game.gameTime = 0;
         this.game.wave = 0;
         this.game.score = 0;
+        this.game.round = 2;
         this.lastTime = 1138;
         this.dt = 0;
         this.animationRef = 0;
@@ -32,6 +34,13 @@ class GameView {
         this.firstGame = false;
         this.game.ships[0].pos = [250, 250];
         // this.start();
+    }
+
+    addScore() {
+        let node = document.createElement("LI");
+        let textnode = document.createTextNode(`${this.game.score}`);
+        node.appendChild(textnode);
+        document.getElementById("scores-list").appendChild(node);
     }
 
     runGame(timestamp) {
@@ -48,13 +57,14 @@ class GameView {
             // cancelAnimationFrame(this.animationRef);
             this.animationRef = requestAnimationFrame(this.runGame);
             this.animationRef = 0;
-            document.getElementById('game-over').style.display = 'block';
-            // document.getElementById('game-canvas').style.display = 'none';
-            // document.getElementById('game-over-overlay').style.display = 'block';
-            document.getElementById('play-again').addEventListener('click', () => {
-                this.reset();
-            });
+            document.getElementById('game-over').style.display = 'flex';
+            document.addEventListener('keydown', this.handleQPress);
         }
+    }
+
+    handleQPress(e) {
+        console.log(e.keyCode);
+        if (e.keyCode === 82) this.reset();
     }
 
     start() {

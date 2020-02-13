@@ -16,7 +16,7 @@ class EnemyFlanker extends Enemy {
     }
 
     fire() {
-        if (this.timer % 30 === 0) {
+        if (this.timer % 45 === 0) {
             let nuBullet = new EnemyBullet({pos: [this.pos[0], this.pos[1] + 5], vel: [this.bulletDir, 0]})
             this.game.enemies.push(nuBullet);
         }

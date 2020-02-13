@@ -42,14 +42,16 @@
             <h1 id="launch-message">Press R to launch!</h1>
           </div>
           <div id="game-over">
-            <h1>GAME OVER</h1>
-            <button id="play-again">Play Again</button>
+            <div class="game-over-message">GAME OVER</div>
+            <div class="game-over-message">Press R to try again!</div>
           </div>
           <canvas id="game-canvas" width="500" height="500">
         </div>
         </canvas>
-        <div class="scores">High Score
-          <i className="fab fa-github"></i>
+        <div id="scores">High Score
+          <ol id="scores-list">
+
+          </ol>
         </div>
       </div>
     </div>

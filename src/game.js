@@ -28,6 +28,8 @@ class Game {
         this.gameTime = 0;
         this.wave = 0;
         this.score = 0;
+        this.round = 2;
+        this.bossSpawn = true;
     }
 
     addEnemyOnes(squads) {
@@ -64,11 +66,11 @@ class Game {
                 let newEn = new EnemyFlanker({ pos: [coordX, coordY], game: this });
                 this.enemies.push(newEn);
                 (coordX === 30) ? coordX = DIM_Y -30 : coordX = 30;
-                coordY -= 25; 
+                coordY -= 40; 
             }
             squadsAdded += 1;
             if (squadsAdded === squads || this.gameView.gameOver === true) clearInterval(addSquads);
-        }, 2000)
+        }, 2500)
     }
 
     addEnemyBoss(squads) {
@@ -79,20 +81,22 @@ class Game {
     }
 
     addEnemies() {
-        if (this.gameTime > 3 && this.wave === 0) {
+        if (this.gameTime > 3 && (this.wave === 0 || this.wave % 4 === 0)) {
             this.wave += 1;
             // this.addEnemyBoss(1);
-            this.addEnemyOnes(4)
+            this.bossSpawn = true;
+            this.addEnemyOnes(this.round)
         } 
-        if (this.gameTime > 15 && this.wave === 1) {
+        if (this.gameTime > 15 && (this.wave === 1 || (this.wave-1) % 4 === 0 )) {
             this.wave += 1;
-            this.addEnemyFlankers(4)
-        } if (this.gameTime > 32 && this.wave === 2) {
+            this.addEnemyFlankers(this.round)
+        } if (this.gameTime > 32 && (this.wave === 2 || (this.wave-2) % 4 === 0 )) {
             this.wave += 1;
-            this.addEnemySnipers(4)
-        } if (this.gameTime > 48 && this.wave === 3) {
-            this.wave += 1;
+            this.addEnemySnipers(this.round)
+        } if (this.bossSpawn && this.gameTime > 48 && (this.wave === 3 || (this.wave-3) % 4 === 0)) {
+            this.bossSpawn = false;
             this.addEnemyBoss(1);
+            this.round += 1;
         }
 
         if (!this.gameView.gameOver) this.gameTime += this.gameView.dt

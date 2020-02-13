@@ -16,7 +16,7 @@ class Ship extends MovingObject {
         this.color = 'green';
         this.radius = 20;
         this.vel = [0, 0];
-        this.speed = 2;
+        this.speed = 2.5;
         this.gameView = props.gameView;
         this.prevFire = 0;
         this.fireEffect = document.createElement("audio");
@@ -50,16 +50,16 @@ class Ship extends MovingObject {
             if (this.game.playerBullets.length <= BULLET_COUNT) this.game.playerBullets.push(newBullet);
             this.prevFire = Date.now()
             // this.fireEffect.play();
-            console.log('hello')
+            console.log(this.game.wave)
         }
     }
 
     collideWith(otherObject) {
         if (otherObject instanceof Enemy) {
-            // this.gameView.gameOver = true;
-            // this.pos = [-40, -40];
-            // this.vel[0] = 0;
-            // this.vel[1] = 0;
+            this.gameView.gameOver = true;
+            this.pos = [-40, -40];
+            this.vel[0] = 0;
+            this.vel[1] = 0;
         }
     }
 

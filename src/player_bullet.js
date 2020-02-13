@@ -3,6 +3,8 @@ const Enemy = require('./enemy');
 const EnemySniper = require('./enemy_sniper');
 const Explosion = require('./explosion');
 const Sprite = require('./sprite');
+const EnemyBoss = require('./enemy_boss');
+const EnemyBullet = require('./enemy_bullet');
 
 class PlayerBullet extends MovingObject {
     constructor(props) {
@@ -14,7 +16,7 @@ class PlayerBullet extends MovingObject {
     }
 
     collideWith(otherObject) {
-        if (otherObject instanceof Enemy) {
+        if (otherObject instanceof Enemy && !(otherObject instanceof EnemyBullet)) {
             otherObject.hp -= 1;
             this.game.remove(this);
             if (otherObject.hp < 1) {
@@ -25,6 +27,11 @@ class PlayerBullet extends MovingObject {
                 if (otherObject instanceof EnemySniper) {
                     this.game.explosions.push(new Explosion({pos: [this.pos[0]-15, this.pos[1]], game: this.game}))
                     this.game.explosions.push(new Explosion({pos: [this.pos[0]+15, this.pos[1]-15], game: this.game}))
+                }
+                if (otherObject instanceof EnemyBoss) {
+                    console.log(this.game.wave)
+                    this.game.wave += 1;
+                    this.game.gameTime = 0;
                 }
             }
         }
