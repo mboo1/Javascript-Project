@@ -1,6 +1,6 @@
 # JavaRaptor
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://i.imgur.com/NvVnQAJ.png "Logo Title Text 1")
 
 JavaRaptor is a top-down 2D shooter inspired by classic games like Apogee's **Raptor: Call of the Shadows** and **Ikaruga**.
 
@@ -78,7 +78,6 @@ Player movement and firing is handled by keyCode Event Listeners in index.js, wh
 
 ```javascript
     takeMove(keyStatus) {
-
         if (!this.gameView.gameOver) {
             (keyStatus.isDown(LEFT)) ? this.vel[0] = -this.speed : this.vel[0] = 0;
             if (keyStatus.isDown(RIGHT)) this.vel[0] = this.speed;
@@ -86,6 +85,5 @@ Player movement and firing is handled by keyCode Event Listeners in index.js, wh
             if (keyStatus.isDown(DOWN)) this.vel[1] = this.speed;
             if (keyStatus.isDown(32)) this.fireBullet();
         }
-
     }
  ```
