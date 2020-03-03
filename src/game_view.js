@@ -15,7 +15,7 @@ class GameView {
         this.animationRef = 0;
         this.handleQPress = this.handleQPress.bind(this);
         this.addScore = this.addScore.bind(this);
-        this.backgroundMusic = new Audio('../gimg/homehold.mp3');
+        this.backgroundMusic = new Audio('./gimg/homehold.mp3');
         this.muteButton = document.getElementById('mute-button');
         this.toggleSound = this.toggleSound.bind(this);
         this.muteButton.addEventListener('click', this.toggleSound);
