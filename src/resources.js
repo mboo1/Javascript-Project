@@ -32,7 +32,7 @@ class Resourcer {
     }
 
     testo2() {
-        console.log('gret')
+        // console.log('gret')
     }
 
     load(urlOrArr) {
@@ -66,7 +66,7 @@ class Resourcer {
     }
 }
 
-module.exports = Resourcer
+// module.exports = Resourcer
 
 
 // (function() {

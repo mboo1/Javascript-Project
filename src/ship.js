@@ -14,13 +14,19 @@ class Ship extends MovingObject {
     constructor(props) {
         super(props);
         this.color = 'green';
-        this.radius = 20;
+        this.radius = 18;
         this.vel = [0, 0];
-        this.speed = 2.5;
+        this.speed = 2.75;
+        this.hp = 3;
+        this.immune = false;
+        this.flicker = true;
         this.gameView = props.gameView;
         this.prevFire = 0;
         this.fireEffect = document.createElement("audio");
-        // this.fireEffect.src = "../img/Gun12.wav";
+        this.fireEffect.src = "./gimg/laserfx2.wav";
+        this.fireEffect.volume = 0.2;
+        this.hitEffect = document.createElement("audio");
+        this.hitEffect.src = "./gimg/hurt.wav";
         // this.sprite = new Sprite('../img/ship.png', [0,0], [15,24], [50, 50], 16, [0, 1, 2, 3, 4, 3, 2, 1], 'horizontal');
         this.sprite = new Sprite('./gimg/ship.png', [32,0], [17,24], [50, 50], 16, [0, 1], 'vertical');
         this.sprites = {
@@ -45,21 +51,34 @@ class Ship extends MovingObject {
     }
 
     fireBullet() {
-        if (Date.now() - this.prevFire > 120) {
-            let newBullet = new PlayerBullet({pos: [this.pos[0], this.pos[1]-13], game: this.game})
-            if (this.game.playerBullets.length <= BULLET_COUNT) this.game.playerBullets.push(newBullet);
-            this.prevFire = Date.now()
-            // this.fireEffect.play();
-            console.log(this.game.wave)
+        if (Date.now() - this.prevFire > 160) {
+            let newBullet = new PlayerBullet({pos: [this.pos[0], this.pos[1]-13], game: this.game, gameView: this.gameView});
+            if (this.game.playerBullets.length <= BULLET_COUNT) {
+                this.game.playerBullets.push(newBullet);
+                if (!this.gameView.muted) {
+                    this.fireEffect.load();
+                    this.fireEffect.play();
+                }
+            }
+            this.prevFire = Date.now();
         }
     }
 
     collideWith(otherObject) {
-        if (otherObject instanceof Enemy) {
-            this.gameView.gameOver = true;
-            this.pos = [-40, -40];
-            this.vel[0] = 0;
-            this.vel[1] = 0;
+        if (otherObject instanceof Enemy && !this.immune && this.hp >= 1) {
+            this.hitEffect.load();
+            this.hitEffect.play();
+            this.hp -= 1;
+            this.immune = true;
+            setTimeout(() => {
+                this.immune = false;
+            }, 1000)
+            if (this.hp < 1) {
+                this.gameView.gameOver = true;
+                this.pos = [-40, -40];
+                this.vel[0] = 0;
+                this.vel[1] = 0;
+            }
         }
     }
 
@@ -82,7 +101,14 @@ class Ship extends MovingObject {
         } else {
             this.sprite = this.sprites.static;
         }
-        this.sprite.render(ctx, this.pos[0]-this.radius-3, this.pos[1]-this.radius);
+        if (!this.immune) {
+            this.sprite.render(ctx, this.pos[0]-this.radius-3, this.pos[1]-this.radius);
+        } else if (this.flicker) {
+            this.sprite.render(ctx, this.pos[0]-this.radius-3, this.pos[1]-this.radius);
+            this.flicker = false;
+        } else {
+            this.flicker = true;
+        }
     }
 
 }

@@ -8,6 +8,7 @@ const EnemyOne = require('./enemy_one');
 const EnemyFlanker = require('./enemy_flanker');
 const EnemySniper = require('./enemy_sniper');
 const EnemyBoss = require('./enemy_boss');
+const EnemyControl = require('./enemy_control');
 const Ship = require('./ship');
 const PlayerBullet = require('./player_bullet');
 const Enemy = require('./enemy');
@@ -30,6 +31,9 @@ class Game {
         this.score = 0;
         this.round = 2;
         this.bossSpawn = true;
+        this.controlSpawn = true;
+        // this.userName = this.gameView.username
+        this.highScores = [['MAB', 10000], ['MAB', 5000], ['MAB', 2500], ['MAB', 1000], ['MAB', 0]]
     }
 
     addEnemyOnes(squads) {
@@ -66,11 +70,11 @@ class Game {
                 let newEn = new EnemyFlanker({ pos: [coordX, coordY], game: this });
                 this.enemies.push(newEn);
                 (coordX === 30) ? coordX = DIM_Y -30 : coordX = 30;
-                coordY -= 40; 
+                coordY -= 50; 
             }
             squadsAdded += 1;
             if (squadsAdded === squads || this.gameView.gameOver === true) clearInterval(addSquads);
-        }, 2500)
+        }, 3000)
     }
 
     addEnemyBoss(squads) {
@@ -80,23 +84,35 @@ class Game {
         }
     }
 
+    addEnemyControl(squads) {
+        for (let i =0; i < squads; i++) {
+            let newEn = new EnemyControl({game: this});
+            this.enemies.push(newEn);
+        }
+    }
+
     addEnemies() {
-        if (this.gameTime > 3 && (this.wave === 0 || this.wave % 4 === 0)) {
+        if (this.gameTime > 2 && (this.wave === 0 || this.wave % 5 === 0)) {
             this.wave += 1;
             // this.addEnemyBoss(1);
+            // this.addEnemyControl(1);
             this.bossSpawn = true;
+            this.controlSpawn = true;
             this.addEnemyOnes(this.round)
         } 
-        if (this.gameTime > 15 && (this.wave === 1 || (this.wave-1) % 4 === 0 )) {
+        if (this.gameTime > 15 && (this.wave === 1 || (this.wave-1) % 5 === 0 )) {
             this.wave += 1;
             this.addEnemyFlankers(this.round)
-        } if (this.gameTime > 32 && (this.wave === 2 || (this.wave-2) % 4 === 0 )) {
+        } if (this.gameTime > 30 && (this.wave === 2 || (this.wave-2) % 5 === 0 )) {
             this.wave += 1;
             this.addEnemySnipers(this.round)
-        } if (this.bossSpawn && this.gameTime > 48 && (this.wave === 3 || (this.wave-3) % 4 === 0)) {
+        } if (this.bossSpawn && this.gameTime > 48 && (this.wave === 3 || (this.wave-3) % 5 === 0)) {
             this.bossSpawn = false;
             this.addEnemyBoss(1);
             this.round += 1;
+        } if (this.controlSpawn && (this.wave === 4 || (this.wave-4) % 5 === 0)) {
+            this.controlSpawn = false;
+            this.addEnemyControl(1);
         }
 
         if (!this.gameView.gameOver) this.gameTime += this.gameView.dt
@@ -148,7 +164,7 @@ class Game {
         } else if (obj instanceof Explosion) {
             this.explosions.splice(this.explosions.indexOf(obj), 1);
         } else {
-            console.log("I dont know what that is");
+            // console.log("I dont know what that is");
         }
     }
 
@@ -190,7 +206,8 @@ class Game {
         ctx.font = '20px VT323';
         ctx.fillStyle = 'yellow'
         ctx.fillText(`Score: ${this.score}`, DIM_X-100, 20);
-        ctx.fillText(`Wave: ${this.wave}`, 20, 20);  
+        ctx.fillText(`Wave: ${this.wave}`, 20, 20);
+        ctx.fillText(`Health: ${this.ships[0].hp}`, 250, 20)
     }
 
     moveObjects() {

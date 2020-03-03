@@ -39,6 +39,16 @@ body {
     margin-right: 10px;
 }
 
+#mute-button {
+    height: 50px;
+    width: 50px;
+    margin: 0px;
+}
+
+#mute-button:hover {
+    cursor: pointer;
+}
+
 .game-row {
     display: flex;
     justify-content: space-around;
@@ -74,14 +84,23 @@ p {
 }
 
 #scores {
-    height: 300px;
-    width: 350px;
-    border: 1px solid black;
+    height: 200px;
+    width: 315px;
+    border: 2px solid white;
+    border-radius: 4px;
 }
 
+#scores-title {
+    color: black;
+    background-color: seashell;
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+}
 
-#game-canvas {
-
+#scores-list {
+    font-size: 24px;
+    margin-left: 10px;
 }
 
 #game-over {
@@ -115,6 +134,27 @@ p {
     font-family: 'VT323', monospace;
 }
 
+#name-input {
+    background-color:rgba(255, 255, 255, 0.3);
+    margin: 0px;
+    filter: blur(0);
+    -webkit-filter: blur(0);
+    position: absolute;
+    top: 207px;
+    left: 144px;
+    height: 50px;
+    width: 200px;
+    border: none;
+    border-radius: 4px;
+    color: black;
+    font-size: 32px;
+    font-family: 'VT323';
+}
+
+#name-input:focus {
+    outline: none;
+}
+
 .game-over-message {
     font-size: 38px;
 }
@@ -125,8 +165,10 @@ p {
     filter: blur(0);
     -webkit-filter: blur(0);
     position: absolute;
-    top: 180px;
-    left: 130px;
+    top: 106px;
+    left: 71px;
+    height: 2000px;
+    font-size: 38px;
 }
 
 .canvas-parent {
