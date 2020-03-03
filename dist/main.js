@@ -126,7 +126,7 @@ eval("const Enemy = __webpack_require__(/*! ./enemy */ \"./src/enemy.js\");\ncon
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const Enemy = __webpack_require__(/*! ./enemy */ \"./src/enemy.js\");\nconst Sprite = __webpack_require__(/*! ./sprite */ \"./src/sprite.js\")\n\nclass EnemyBullet extends Enemy {\n    constructor(props) {\n        super(props);\n        this.color = 'orange';\n        this.radius = 6;\n        // this.vel = [0, 3.5];\n        this.value = 0;\n        this.sprite = new Sprite('./gimg/laserbolts.png', [5,5], [14,12], [35, 35], 2, [0, 1], 'horizontal');\n    }\n\n    draw(ctx) {\n        // ctx.fillStyle = this.color;\n\n        // ctx.beginPath();\n        // ctx.arc(\n        //     this.pos[0], this.pos[1], this.radius, 0, 2*Math.PI, true\n        // );\n        // ctx.fill();\n        this.sprite.render(ctx, this.pos[0]-this.radius-4, this.pos[1]-this.radius-6);\n    }\n}\n\nmodule.exports = EnemyBullet;\n\n//# sourceURL=webpack:///./src/enemy_bullet.js?");
+eval("const Enemy = __webpack_require__(/*! ./enemy */ \"./src/enemy.js\");\nconst Sprite = __webpack_require__(/*! ./sprite */ \"./src/sprite.js\")\n\nclass EnemyBullet extends Enemy {\n    constructor(props) {\n        super(props);\n        this.color = 'orange';\n        this.radius = 6;\n        // this.vel = [0, 3.5];\n        this.value = 0;\n        this.sprite = new Sprite('./gimg/laserbolts.png', [5,5], [14,12], [35, 35], 2, [0, 1], 'horizontal');\n    }\n\n    draw(ctx) {\n        this.sprite.render(ctx, this.pos[0]-this.radius-4, this.pos[1]-this.radius-6);\n    }\n}\n\nmodule.exports = EnemyBullet;\n\n//# sourceURL=webpack:///./src/enemy_bullet.js?");
 
 /***/ }),
 

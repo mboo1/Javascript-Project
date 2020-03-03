@@ -27,7 +27,7 @@
       <!-- <div id="game-over-overlay"></div> -->
       <div class="title-row">
         <nav class="name">
-          Michael Booe
+          Michael Booex
         </nav>
         <div class="game-title">
           JS Raptor

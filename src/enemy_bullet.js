@@ -12,13 +12,6 @@ class EnemyBullet extends Enemy {
     }
 
     draw(ctx) {
-        // ctx.fillStyle = this.color;
-
-        // ctx.beginPath();
-        // ctx.arc(
-        //     this.pos[0], this.pos[1], this.radius, 0, 2*Math.PI, true
-        // );
-        // ctx.fill();
         this.sprite.render(ctx, this.pos[0]-this.radius-4, this.pos[1]-this.radius-6);
     }
 }
