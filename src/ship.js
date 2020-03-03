@@ -16,7 +16,7 @@ class Ship extends MovingObject {
         this.color = 'green';
         this.radius = 18;
         this.vel = [0, 0];
-        this.speed = 2.75;
+        this.speed = 2.55;
         this.hp = 3;
         this.immune = false;
         this.flicker = true;
