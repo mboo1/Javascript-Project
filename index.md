@@ -14,12 +14,12 @@
 </body> -->
 
 <head>
-    <script src="main.js"></script>
-    <script type="text/javascript" src="../src/resources.js"></script>
+    <script src="dist/main.js"></script>
+    <script type="text/javascript" src="src/resources.js"></script>
     <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d1f67cf0b7.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b3bfcf250f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="dist/index.css">
 </head>
 
 <body>
