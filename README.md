@@ -46,14 +46,14 @@ The scrolling background effect is achieved by drawing the background twice, wit
             let newY = Math.random() - Math.random();
             this.vel = [newX, newY];
         } if (this.timer > 180) {
-            if (this.pos[0] < 10) this.vel[0] = 0.25;
+            if (this.pos[0] < 10 || ) this.vel[0] = 0.25;
             if (this.pos[0] > 490) this.vel[0] = -0.25;
             if (this.pos[1] < 10) this.vel[1] = 0.25;
             if (this.pos[1] > 490) this.vel[1] = -0.25;
         }
  ```
  
-The enemy boss's bullet spirals are created by incrementing and decrementing x and y-velocities to cover a 360° spread.
+The enemy boss's bullet spirals are created by incrementing and decrementing x and y-velocities of the bullets to cover a 360° spread.
 
 ```javascript
             if (xFalling === true) {
@@ -66,11 +66,26 @@ The enemy boss's bullet spirals are created by incrementing and decrementing x a
             } else {
                 ySpeed += 0.3;
             }
-            // (xFalling === true) ? xSpeed -= 0.1 : xSpeed += 0.1;
-            // (yFalling === true) ? ySpeed -= 0.1 : ySpeed += 0.1;
             if (xSpeed <= -2) xFalling = false;
             if (xSpeed >= 2) xFalling = true;
             if (ySpeed <= -2) yFalling = false;
             if (ySpeed >= 2) yFalling = true;
 ```
 
+### Player Movement
+
+Player movement and firing is handled by keyCode Event Listeners in index.js, which add keys to a keyStatus object when a given key is pressed and remove them when a given key is released. KeyStatus is passed into the Ship object which changes its speed based on player input every game cycle.  This allows for diagonal movement if two non-opposing directional keys are held down simultaneously.
+
+```javascript
+    takeMove(keyStatus) {
+
+        if (!this.gameView.gameOver) {
+            (keyStatus.isDown(LEFT)) ? this.vel[0] = -this.speed : this.vel[0] = 0;
+            if (keyStatus.isDown(RIGHT)) this.vel[0] = this.speed;
+            (keyStatus.isDown(UP)) ? this.vel[1] = -this.speed : this.vel[1] = 0;
+            if (keyStatus.isDown(DOWN)) this.vel[1] = this.speed;
+            if (keyStatus.isDown(32)) this.fireBullet();
+        }
+
+    }
+ ```
