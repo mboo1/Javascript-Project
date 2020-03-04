@@ -1,6 +1,6 @@
 # JavaRaptor
 
-![alt text](https://i.imgur.com/NvVnQAJ.png "Logo Title Text 1")
+![alt text](https://i.imgur.com/NvVnQAJ.png "JavaRaptor Screenshot 1")
 
 JavaRaptor is a top-down 2D shooter inspired by classic games like Apogee's **Raptor: Call of the Shadows** and **Ikaruga**.
 
