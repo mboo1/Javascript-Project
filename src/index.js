@@ -1,4 +1,4 @@
-console.log('webpack is working!3');
+// console.log('webpack is working!3');
 const MovingObject = require('./moving_object');
 const EnemyOne = require('./enemy_one');
 const GameView = require('./game_view');
