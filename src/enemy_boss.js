@@ -91,16 +91,3 @@ class EnemyBoss extends Enemy {
 }
 
 module.exports = EnemyBoss;
-
-
-            // this.fireBulletHalo(75);
-            // setTimeout(() => {
-            //     this.fireBulletHalo(75)
-            // }, 1000)
-            // setTimeout(() => {
-            //     this.fireBulletHalo(75)
-            // }, 2000)
-            // setTimeout(() => {
-            //     this.fireBulletHalo(75)
-            // }, 3000)
-            // this.okay = false;
